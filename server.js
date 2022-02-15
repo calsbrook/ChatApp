@@ -1,80 +1,71 @@
+const server = require('http').createServer(app);
+const options = {cors:true, origins:["http://127.0.0.1:8080"]}
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
-var path = require("path");
-// var uuid = require('uuid-random');
+var io = require('socket.io')(server, options);
+const STATIC_CHANNELS = [{
+    name: 'Main chat',
+    participants: 0,
+    id: 1,
+    sockets: []
+},{
+    name: 'Secondary chat',
+    participants: 0,
+    id: 2,
+    sockets: []
+}];
+const PORT = 8080;
 
-var PORT = process.env.PORT || 3000
-
-var server = app.listen(PORT, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log(`Listening at port ${PORT}`);
+server.listen(PORT, () => {
+    console.log(`listening on port: ${PORT}`);
 })
-app.get("/", (req, res) => {
-    res.send("A message from CS361");
-})
 
-app.use(bodyParser.json());
+io.on('connection', (socket) => {
+    console.log('new client connected');
 
-app.use(function(req, res, next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+    socket.emit('connection', null)
 
-
-var io = require('socket.io')(server);
-
-var chatRoomData = []
-var connectedClients = {}
-
-io.use((socket, next) => {
-    let handshake = socket.handshake;
-});
-
-io.on('connection', (client) => {
-    // creating new user
-    client.on("CreateUserData", () => {
-        let userID = uuid();
-        let username = "someone";
-        let address = client.handshake.address;
-        let userData = {userID: userID, username: username, address: address}
-        client.emit("SetUserData", userData);
+    socket.on('channel-join', id => {
+        console.log(`channel join: ${id}`);
+        
+        STATIC_CHANNELS.forEach(currentChannel => {
+            if(currentChannel.id === id){
+                if (currentChannel.sockets.indexOf(socket.id) == (-1)) {
+                    currentChannel.sockets.push(socket.id);
+                    currentChannel.participants++;
+                    io.emit('channel', currentChannel);
+                }
+            } else {
+                let index = -1;
+                if(currentChannel.sockets){
+                    index = currentChannel.sockets.indexOf(socket.id);
+                }
+                if (index !== -1){
+                    currentChannel.sockets.splice(index,1);
+                    currentChannel.participants--;
+                    io.emit('channel', currentChannel);
+                }
+            }
+        });
+        return id;
     })
 
-    // registered user enters the chat
-    client.on("UserEnteredRoom", (userData) => {
-        var enteredRoomMessage = {message: `${userData.username} is here`, username: "", userID: 0, timeStamp: null}
-        chatRoomData.push(enteredRoomMessage);
-        sendUpdatedChatRoomData(client);
-        connectedClients[client.id] = userData;
-    });
-    
-    // new message sent
-    client.on("SendMessage", (messageData) => {
-        chatRoomData.push(messageData);
-        sendUpdatedChatRoomData(client);
-    });
-
-    // disconnect
-    client.on('disconnecting', (data) => {
-        if(connectedClients[client.id]){
-            let disconnectMessage = {message: `${connectedClients[client.id].username} has left the chat`, username: "", userID: 0, timeStamp: null}
-            chatRoomData.push(disconnectMessage);
-            sendUpdatedChatRoomData(client);
-            delete connectedClients[client.id];
+    socket.on('send-message', message => {
+        io.emit('message', message);
+        if (message.text.indexOf("/weather")===0 && socket.handshake){
+            console.log(`WEATHER REQUEST FROM ${socket.handshake.address}`)
+            Object.keys(socket.handshake).forEach(key => {
+                console.log(key, socket.handshake[key])
+            })
+            // console.log(typeof socket.handshake);
         }
-    });
-
-    client.on('ClearChat', () => {
-        chatRoomData = [];
-        sendUpdatedChatRoomData(client);
     })
-    
-});
 
-function sendUpdatedChatRoomData(client){
-    client.emit("RetrieveChatRoomData", chatRoomData);
-    client.broadcast.emit("RetrieveChatRoomData", chatRoomData);
-}
+})
+
+app.get('/getChannels', (req, res) => {
+    console.log(STATIC_CHANNELS);
+    res.json({
+        channels: STATIC_CHANNELS
+    })
+})
