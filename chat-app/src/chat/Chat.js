@@ -54,9 +54,6 @@ export class Chat extends React.Component {
                     }
                 }
             });
-            // if (message.text.indexOf("/weather") === 0){
-            //     console.log(`WEATHER REQUEST FROM ${socket.handshake.address}`)
-            // }
             this.setState({channels});
         });
         this.socket = socket;

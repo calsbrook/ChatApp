@@ -1,0 +1,264 @@
+{
+    "@context": [
+        "https://geojson.org/geojson-ld/geojson-context.jsonld",
+        {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "Feature",
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -118.31786580000001,
+                    33.802783900000001
+                ],
+                [
+                    -118.31321840000001,
+                    33.780547500000004
+                ],
+                [
+                    -118.28645580000001,
+                    33.784408500000005
+                ],
+                [
+                    -118.29109810000001,
+                    33.806645400000008
+                ],
+                [
+                    -118.31786580000001,
+                    33.802783900000001
+                ]
+            ]
+        ]
+    },
+    "properties": {
+        "updated": "2022-02-28T21:36:41+00:00",
+        "units": "us",
+        "forecastGenerator": "BaselineForecastGenerator",
+        "generatedAt": "2022-03-01T03:12:37+00:00",
+        "updateTime": "2022-02-28T21:36:41+00:00",
+        "validTimes": "2022-02-28T15:00:00+00:00/P7DT13H",
+        "elevation": {
+            "unitCode": "wmoUnit:m",
+            "value": 29.8704
+        },
+        "periods": [
+            {
+                "number": 1,
+                "name": "Tonight",
+                "startTime": "2022-02-28T19:00:00-08:00",
+                "endTime": "2022-03-01T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 50,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 mph",
+                "windDirection": "NNW",
+                "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
+                "shortForecast": "Mostly Clear",
+                "detailedForecast": "Mostly clear, with a low around 50. North northwest wind around 5 mph."
+            },
+            {
+                "number": 2,
+                "name": "Tuesday",
+                "startTime": "2022-03-01T06:00:00-08:00",
+                "endTime": "2022-03-01T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 84,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 to 15 mph",
+                "windDirection": "NNW",
+                "icon": "https://api.weather.gov/icons/land/day/few?size=medium",
+                "shortForecast": "Sunny",
+                "detailedForecast": "Sunny, with a high near 84. North northwest wind 5 to 15 mph."
+            },
+            {
+                "number": 3,
+                "name": "Tuesday Night",
+                "startTime": "2022-03-01T18:00:00-08:00",
+                "endTime": "2022-03-02T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 47,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "0 to 15 mph",
+                "windDirection": "NNW",
+                "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
+                "shortForecast": "Mostly Clear",
+                "detailedForecast": "Mostly clear, with a low around 47. North northwest wind 0 to 15 mph."
+            },
+            {
+                "number": 4,
+                "name": "Wednesday",
+                "startTime": "2022-03-02T06:00:00-08:00",
+                "endTime": "2022-03-02T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 76,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 to 10 mph",
+                "windDirection": "SE",
+                "icon": "https://api.weather.gov/icons/land/day/sct?size=medium",
+                "shortForecast": "Mostly Sunny",
+                "detailedForecast": "Mostly sunny, with a high near 76. Southeast wind 5 to 10 mph."
+            },
+            {
+                "number": 5,
+                "name": "Wednesday Night",
+                "startTime": "2022-03-02T18:00:00-08:00",
+                "endTime": "2022-03-03T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 50,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "0 to 10 mph",
+                "windDirection": "S",
+                "icon": "https://api.weather.gov/icons/land/night/fog?size=medium",
+                "shortForecast": "Patchy Fog",
+                "detailedForecast": "Patchy fog after 10pm. Mostly cloudy, with a low around 50. South wind 0 to 10 mph."
+            },
+            {
+                "number": 6,
+                "name": "Thursday",
+                "startTime": "2022-03-03T06:00:00-08:00",
+                "endTime": "2022-03-03T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 68,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "0 to 15 mph",
+                "windDirection": "S",
+                "icon": "https://api.weather.gov/icons/land/day/fog/rain_showers,30?size=medium",
+                "shortForecast": "Patchy Fog then Chance Rain Showers",
+                "detailedForecast": "Patchy fog before 10am, then a chance of rain showers. Mostly cloudy, with a high near 68. Chance of precipitation is 30%."
+            },
+            {
+                "number": 7,
+                "name": "Thursday Night",
+                "startTime": "2022-03-03T18:00:00-08:00",
+                "endTime": "2022-03-04T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 49,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "15 mph",
+                "windDirection": "W",
+                "icon": "https://api.weather.gov/icons/land/night/rain_showers,30/fog,30?size=medium",
+                "shortForecast": "Chance Rain Showers then Patchy Fog",
+                "detailedForecast": "A chance of rain showers before 10pm, then patchy fog. Mostly cloudy, with a low around 49. Chance of precipitation is 30%."
+            },
+            {
+                "number": 8,
+                "name": "Friday",
+                "startTime": "2022-03-04T06:00:00-08:00",
+                "endTime": "2022-03-04T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 66,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "10 to 15 mph",
+                "windDirection": "WNW",
+                "icon": "https://api.weather.gov/icons/land/day/fog/sct?size=medium",
+                "shortForecast": "Patchy Fog then Mostly Sunny",
+                "detailedForecast": "Patchy fog before 10am. Mostly sunny, with a high near 66."
+            },
+            {
+                "number": 9,
+                "name": "Friday Night",
+                "startTime": "2022-03-04T18:00:00-08:00",
+                "endTime": "2022-03-05T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 46,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "10 to 15 mph",
+                "windDirection": "WNW",
+                "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
+                "shortForecast": "Mostly Clear",
+                "detailedForecast": "Mostly clear, with a low around 46."
+            },
+            {
+                "number": 10,
+                "name": "Saturday",
+                "startTime": "2022-03-05T06:00:00-08:00",
+                "endTime": "2022-03-05T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 65,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "10 to 20 mph",
+                "windDirection": "NW",
+                "icon": "https://api.weather.gov/icons/land/day/few?size=medium",
+                "shortForecast": "Sunny",
+                "detailedForecast": "Sunny, with a high near 65."
+            },
+            {
+                "number": 11,
+                "name": "Saturday Night",
+                "startTime": "2022-03-05T18:00:00-08:00",
+                "endTime": "2022-03-06T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 45,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "10 to 20 mph",
+                "windDirection": "WNW",
+                "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
+                "shortForecast": "Mostly Clear",
+                "detailedForecast": "Mostly clear, with a low around 45."
+            },
+            {
+                "number": 12,
+                "name": "Sunday",
+                "startTime": "2022-03-06T06:00:00-08:00",
+                "endTime": "2022-03-06T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 66,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "10 to 20 mph",
+                "windDirection": "WNW",
+                "icon": "https://api.weather.gov/icons/land/day/few?size=medium",
+                "shortForecast": "Sunny",
+                "detailedForecast": "Sunny, with a high near 66."
+            },
+            {
+                "number": 13,
+                "name": "Sunday Night",
+                "startTime": "2022-03-06T18:00:00-08:00",
+                "endTime": "2022-03-07T06:00:00-08:00",
+                "isDaytime": false,
+                "temperature": 45,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 to 20 mph",
+                "windDirection": "NNW",
+                "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
+                "shortForecast": "Mostly Clear",
+                "detailedForecast": "Mostly clear, with a low around 45."
+            },
+            {
+                "number": 14,
+                "name": "Monday",
+                "startTime": "2022-03-07T06:00:00-08:00",
+                "endTime": "2022-03-07T18:00:00-08:00",
+                "isDaytime": true,
+                "temperature": 66,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 to 15 mph",
+                "windDirection": "W",
+                "icon": "https://api.weather.gov/icons/land/day/few?size=medium",
+                "shortForecast": "Sunny",
+                "detailedForecast": "Sunny, with a high near 66."
+            }
+        ]
+    }
+}

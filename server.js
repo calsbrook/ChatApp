@@ -1,8 +1,10 @@
 const server = require('http').createServer(app);
 const options = {cors:true, origins:["http://127.0.0.1:8080"]}
+const {spawn} = require('child_process');
 var express = require('express');
 var app = express();
 var io = require('socket.io')(server, options);
+
 const STATIC_CHANNELS = [{
     name: 'Main chat',
     participants: 0,
@@ -53,15 +55,36 @@ io.on('connection', (socket) => {
     socket.on('send-message', message => {
         io.emit('message', message);
         if (message.text.indexOf("/weather")===0 && socket.handshake){
-            console.log(`WEATHER REQUEST FROM ${socket.handshake.address}`)
-            Object.keys(socket.handshake).forEach(key => {
-                console.log(key, socket.handshake[key])
-            })
-            // console.log(typeof socket.handshake);
+            let messageArray = message.text.split(" ");
+            var weatherText = "";
+            if (messageArray.length < 2){
+                weatherText = "Please provide the zip code for the weather."
+                let newMessage = {id: Date.now(), text: weatherText, senderName: "Help Bot 3000", channel_id: message.channel_id}
+                io.emit('message', newMessage)
+            } else {
+                getPythonWeatherAsync(messageArray[1],message)
+            }
         }
     })
 
 })
+
+async function getPythonWeatherAsync(zipCode, message){
+    const python = spawn('python3', ['./WeatherMicroservice/WxAPI.py', zipCode]);
+    let newMessage = {id: Date.now(), text: "", senderName: "Help Bot 3000", channel_id: message.channel_id}
+    python.stdout.on('data', function (data){
+        let weatherText = data.toString();
+        newMessage.text = weatherText
+        io.emit('message', newMessage);
+    })
+    
+    python.on('close', (code) => {
+        // console.log(code);
+        python.kill();
+    })
+
+    
+}
 
 app.get('/getChannels', (req, res) => {
     console.log(STATIC_CHANNELS);
