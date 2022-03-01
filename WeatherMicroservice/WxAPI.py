@@ -44,7 +44,7 @@ def get_weather(zip_code):
         weather_object = json.load(data_file)
         detailed_forecast = weather_object["properties"]["periods"][0]["detailedForecast"]
         return detailed_forecast
-# print("sys.argv[1]",sys.argv[1])
+
 running = True
 while running:
     if len(sys.argv) > 1:
