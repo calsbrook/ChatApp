@@ -59,12 +59,17 @@ export class Chat extends React.Component {
         this.socket = socket;
     }
 
-    handleSendMessage = (channel_id, text) => {
-        this.socket.emit('send-message', {channel_id, text, senderName: this.socket.id, id:Date.now()});
+    handleSendMessage = (channel_id, text, file = null) => {
+        if (file){
+            console.log('handleSendMessage of file')
+            this.socket.emit('send-message', {channel_id, text, file, mimeType: file.type, fileName: file.name, senderName: this.socket.id, id:Date.now()});
+        } else {
+            console.log('handleSendMessage of text')
+            this.socket.emit('send-message', {channel_id, text, senderName: this.socket.id, id:Date.now()});
+        }
     }
 
     handleChannelSelect = id => {
-        console.log(id)
         let channel = this.state.channels.find(c => {
             return c.id === id;
         })

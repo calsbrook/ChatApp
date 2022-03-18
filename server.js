@@ -79,7 +79,6 @@ async function getPythonWeatherAsync(zipCode, message){
     })
     
     python.on('close', (code) => {
-        // console.log(code);
         python.kill();
     })
 
