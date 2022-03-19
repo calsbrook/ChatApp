@@ -9,7 +9,7 @@ const SERVER = "http://127.0.0.1:8080";
 
 export class Chat extends React.Component {
     state = {
-        channels: [{id: 1, name: 'first', participants: 0},{id: 2, name:'second', participants:0}],
+        channels: [{id: 1, name: 'General', participants: 0},{id: 2, name:'Off-Topic', participants:0}],
         socket: null,
         channel: null
     }

@@ -31,8 +31,6 @@
         span {
             font-size: 10px;
         }
-
-       
         &:hover {
             background-color: rgb(224, 224, 224);
             cursor: pointer;
@@ -44,14 +42,11 @@
         border: 1px solid rgb(224, 224, 224);
         margin: 10px;
         margin-left: 0;
-        height: calc(100% - 22px);
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-        // .fileInput {
-        //     display:none;
-        // }
+        // position: absolute;
 
         .messages-list {
             align-self: stretch;
@@ -85,7 +80,7 @@
             button {
                 width: 60px;
                 margin: auto 10px;
-                background-color: #0e62da;
+                background-color: #da990e;
                 color: white;
                 border: 1px solid;
                 border-radius: 10px;

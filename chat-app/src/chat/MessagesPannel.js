@@ -1,7 +1,5 @@
 import React, {useRef} from 'react';
 import { Message } from './Message';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faImage} from '@fortawesome/free-solid-svg-icons';
 
 export class MessagesPanel extends React.Component {
     state = {input_value: '', file: null}
@@ -20,14 +18,10 @@ export class MessagesPanel extends React.Component {
             this.send();
         }
     }
-    // handleClick = e => {
-    //     hiddenFileInput.current.click();
-    // }
     setFile = (e) => {
         this.setState({file: e})
     }
     selectFile = (e) => {
-        // setFileMessage(e.target.files[0].name);
         this.setFile(e.target.files[0]);
     }
     render() {
@@ -40,7 +34,6 @@ export class MessagesPanel extends React.Component {
                 <div className="messages-list">{list}</div>
                 <input onChange={this.selectFile} type="file" className="fileInput" ref="fileInput"/>
                 <div className="messages-input">
-                    {/* <FontAwesomeIcon icon={faImage} onClick={handleClick}/> */}
                     <input type="text" onChange={this.handleInput} value={this.state.input_value} onKeyDown={this.handleKeyDown}/>
                     <button onClick={this.send}>Send</button>
                 </div>
