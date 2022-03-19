@@ -9,7 +9,7 @@ const SERVER = "http://127.0.0.1:8080";
 
 export class Chat extends React.Component {
     state = {
-        channels: [{id: 1, name: 'General', participants: 0},{id: 2, name:'Off-Topic', participants:0}],
+        channels: [{id: 1, name: 'General', participants: 0},{id: 2, name:'Off-Topic', participants:0},{id: 3, name:'Memes Only', participants:0}],
         socket: null,
         channel: null
     }
@@ -19,9 +19,10 @@ export class Chat extends React.Component {
         this.configureSocket();
     }
     loadChannels = async () => { 
+        console.log('hi')
         fetch('http://localhost:8080/getChannels').then(async response => {
-            let data = await response.json();
-            this.setState({channels: data.channels})
+            console.log(response)
+            this.setState({channels: response.channels})
         .catch((error) => {
             console.error(error);
         });

@@ -10,7 +10,7 @@ function Image(props){
         }
     }, [props.blob]);
     return (
-        <img style={{width:150, height: "auto"}} src={imageSource} alt="picture"/>
+        <img style={{width:150, height: "auto"}} src={imageSource} alt="user uploaded picture"/>
     );
 }
 

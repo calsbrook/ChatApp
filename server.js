@@ -17,6 +17,11 @@ const STATIC_CHANNELS = [{
     participants: 0,
     id: 2,
     sockets: []
+},{
+    name: 'Memes Only',
+    participants: 0,
+    id: 3,
+    sockets: []
 }];
 const PORT = 8080;
 

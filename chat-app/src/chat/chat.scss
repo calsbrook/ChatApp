@@ -46,7 +46,6 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        // position: absolute;
 
         .messages-list {
             align-self: stretch;
@@ -72,7 +71,7 @@
 
                 &:focus {
                     border-radius: 15px;
-                    border: 2px solid #66a6ff;
+                    border: 2px solid cyan;
                     outline: none;
                  }
             }
@@ -80,7 +79,7 @@
             button {
                 width: 60px;
                 margin: auto 10px;
-                background-color: #da990e;
+                background-color: orange;
                 color: white;
                 border: 1px solid;
                 border-radius: 10px;
@@ -88,7 +87,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    background-color: #66a6ff;
+                    background-color: darkorange;
                 }
             }
         }
